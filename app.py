@@ -2,6 +2,14 @@ from flask import Flask, request, render_template
 import numpy as np
 import pickle
 from flask import url_for
+from flask import Flask, send_from_directory
+import os
+app = Flask(__name__, static_folder='static')
+
+
+@app.route('/static/<path:path>')
+def send_static(path):
+    return send_from_directory(app.static_folder, path)
 
 
 app = Flask(__name__)
